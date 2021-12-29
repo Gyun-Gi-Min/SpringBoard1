@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+        <!--빈등록 // xml에 직접 주는것과 java파일에 에노테이션.-->
+        <context:component-scan base-package="org.example.springboard1"/>
+        <!--
+        "주소" 를 찾아라(뒤져라)
+         찾으면 bean을 등록하라.
+        -->
+
+        <mvc:annotation-driven/>
+
+
+        <mvc:resources mapping="/res/**" location="/res/"/>
+
+        <!--RESTful 쓰는게 아니라면 이건 필수-->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <!--<constructor-arg></constructor-arg>은 생성자 이용해서 사용-->
+            <property name="prefix" value="/WEB-INF/view/"/>  <!--이거는 setter이용하여 사용-->
+            <property name="suffix" value=".jsp" />
+        </bean>
+
+</beans>
