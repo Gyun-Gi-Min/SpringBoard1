@@ -12,9 +12,18 @@ public class BoardService {
     @Autowired
     private BoardMapper mapper;
 
-    public int insBoard(BoardEntity entity){
-        return mapper.insBoard(entity);
+    public int insBoard(BoardEntity entity)
+    {
+        try{
+            return mapper.insBoard(entity);}
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
     }
+
+
+
 
     public List<BoardEntity> selBoardList(){
         return mapper.selBoardList();
@@ -30,12 +39,19 @@ public class BoardService {
 
     // 조회수 올리기.
     public void updBoardHitsUp(BoardEntity entity){
-        entity.setHits(1);
+        entity.setHits(1); //Mapper에서 hits==1일 경우라고 했으니 1을 세팅.
        // mapper.updBoard(entity);
         updBoard(entity);
     }
 
-    public int delBoard(BoardEntity entity){ return  mapper.delBoard(entity);}
+    public int delBoard(BoardEntity entity){
+        try{
+            return  mapper.delBoard(entity);}
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
 
 
 

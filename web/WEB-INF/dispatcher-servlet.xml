@@ -10,13 +10,13 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-        <!--빈등록 // xml에 직접 주는것과 java파일에 에노테이션.-->
+        <!--빈등록 // xml에 직접 주는것과 java파일에 에노테이션.패키지명-->
         <context:component-scan base-package="org.example.springboard1"/>
+
         <!--
         "주소" 를 찾아라(뒤져라)
          찾으면 bean을 등록하라.
         -->
-
         <mvc:annotation-driven/>
 
 
