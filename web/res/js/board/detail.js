@@ -10,6 +10,9 @@ btnDelElem.addEventListener('click',function (){
     }
 });
 
+
+
+
 const errAlert = document.querySelector('#alert');
 if(errAlert.dataset.err.length > 0){ //이게 true면 err실행이니까 delBoard 실행x
     alert(`${errAlert.dataset.err}`);

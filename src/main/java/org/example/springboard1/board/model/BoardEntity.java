@@ -1,4 +1,4 @@
-package org.example.springboard1;
+package org.example.springboard1.board.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,8 @@ public class BoardEntity {
     private int iboard;
     private String title;
     private String ctnt;
-    private int hits;
+    private int writer;
+    private int hit;
     private String rdt;
     private String mdt;
 }

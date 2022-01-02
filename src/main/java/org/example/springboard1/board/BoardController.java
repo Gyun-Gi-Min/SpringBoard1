@@ -1,6 +1,9 @@
-package org.example.springboard1;
+package org.example.springboard1.board;
 
 
+import org.example.springboard1.UserUtils;
+import org.example.springboard1.board.model.BoardEntity;
+import org.example.springboard1.board.model.BoardVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.swing.*;
-import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -19,10 +20,12 @@ public class BoardController {
     @Autowired //private인데도 주솟값 들어옴.4버전일때 씀.
     private BoardService service;
 
+
+
     @RequestMapping("/list") //void로 했을때 주소값 매핑. (추정한다... 경로를 맞춰줘야한다)
     //@GetMapping("/list")
     public void list(Model model){
-        List<BoardEntity> list = service.selBoardList();
+        List<BoardVo> list = service.selBoardList();
         model.addAttribute("list",list);
     }
     @GetMapping("/detail")
@@ -49,6 +52,7 @@ public class BoardController {
 
     @GetMapping ("/del")
     public String delProc(BoardEntity entity, RedirectAttributes reAttr){
+
         int result = service.delBoard(entity);
         if(result == 0 ){
             reAttr.addFlashAttribute("msg","글 삭제 실패~~");
